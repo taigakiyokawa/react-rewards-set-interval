@@ -1,16 +1,26 @@
 import "./App.css";
-import { FC, useEffect } from "react";
+import { FC, useEffect, useRef } from "react";
 import { useReward } from "react-rewards";
+
+const useInterval = (callback: () => void) => {
+  const callbackRef = useRef(() => {});
+
+  useEffect(() => {
+    callbackRef.current = callback;
+  }, [callback]);
+
+  useEffect(() => {
+    const timerId = setInterval(() => callbackRef.current(), 1000);
+    return () => clearInterval(timerId);
+  }, []);
+};
 
 export const App: FC = () => {
   const { reward, isAnimating } = useReward("rewardId", "confetti");
 
-  useEffect(() => {
-    const timerId = setInterval(() => {
-      reward();
-    }, 1000);
-    return () => clearInterval(timerId);
-  }, [reward]);
+  useInterval(() => {
+    reward();
+  });
 
   return (
     <div className="App">
