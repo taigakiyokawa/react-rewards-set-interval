@@ -1,26 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { FC, useEffect, useRef } from "react";
+import { useReward } from "react-rewards";
 
-function App() {
+const useInterval = (callback: () => void) => {
+  const callbackRef = useRef(() => {});
+
+  useEffect(() => {
+    callbackRef.current = callback;
+  }, [callback]);
+
+  useEffect(() => {
+    const timerId = setInterval(() => callbackRef.current(), 1000);
+    return () => clearInterval(timerId);
+  }, []);
+};
+
+export const App: FC = () => {
+  const { reward, isAnimating } = useReward("rewardId", "confetti");
+
+  useInterval(() => {
+    if (!isAnimating) {
+      reward();
+    }
+  });
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <span id="rewardId" />
     </div>
   );
-}
-
-export default App;
+};
