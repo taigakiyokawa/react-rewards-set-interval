@@ -6,7 +6,10 @@ export const App: FC = () => {
   const { reward, isAnimating } = useReward("rewardId", "confetti");
 
   useEffect(() => {
-    reward();
+    const timerId = setInterval(() => {
+      reward();
+    }, 1000);
+    return () => clearInterval(timerId);
   }, [reward]);
 
   return (
