@@ -19,7 +19,9 @@ export const App: FC = () => {
   const { reward, isAnimating } = useReward("rewardId", "confetti");
 
   useInterval(() => {
-    reward();
+    if (!isAnimating) {
+      reward();
+    }
   });
 
   return (
