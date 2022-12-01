@@ -16,8 +16,16 @@ const useInterval = (callback: () => void) => {
 };
 
 export const App: FC = () => {
-  const { reward: rewardRight, isAnimating: isAnimatingRight } = useReward("rewardRight", "confetti", {angle: 45});
-  const { reward: rewardLeft, isAnimating: isAnimatingLeft } = useReward("rewardLeft", "confetti", {angle: 135});
+  const { reward: rewardRight, isAnimating: isAnimatingRight } = useReward(
+    "rewardRight",
+    "confetti",
+    { angle: 45 }
+  );
+  const { reward: rewardLeft, isAnimating: isAnimatingLeft } = useReward(
+    "rewardLeft",
+    "confetti",
+    { angle: 135 }
+  );
 
   useInterval(() => {
     if (!isAnimatingRight || !isAnimatingLeft) {
@@ -27,9 +35,12 @@ export const App: FC = () => {
   });
 
   return (
-    <div className="App">
-      <span id="rewardRight" />
-      <span id="rewardLeft" />
-    </div>
+    <>
+      <header className="header">
+        <span id="rewardRight" />
+        <span id="rewardLeft" />
+      </header>
+      <footer className="footer" />
+    </>
   );
 };

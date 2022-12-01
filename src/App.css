@@ -1,4 +1,4 @@
-.App {
+.header {
   width: 100%;
   min-height: 100vh;
   display: flex;
@@ -7,13 +7,8 @@
   background-color: #282c34;
 }
 
-.button {
-  width: 200px;
-  padding: 8px 24px;
-  border-radius: 100px;
-  font-size: 4rem;
-}
-
-.button:hover {
-  cursor: pointer;
+.footer {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #ccc;
 }
