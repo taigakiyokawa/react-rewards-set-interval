@@ -1,8 +1,9 @@
 .App {
   width: 100%;
   min-height: 100vh;
-  display: grid;
-  place-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   background-color: #282c34;
 }
 
