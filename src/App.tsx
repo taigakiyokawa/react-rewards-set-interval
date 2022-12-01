@@ -16,17 +16,20 @@ const useInterval = (callback: () => void) => {
 };
 
 export const App: FC = () => {
-  const { reward, isAnimating } = useReward("rewardId", "confetti");
+  const { reward: rewardRight, isAnimating: isAnimatingRight } = useReward("rewardRight", "confetti", {angle: 45});
+  const { reward: rewardLeft, isAnimating: isAnimatingLeft } = useReward("rewardLeft", "confetti", {angle: 135});
 
   useInterval(() => {
-    if (!isAnimating) {
-      reward();
+    if (!isAnimatingRight || !isAnimatingLeft) {
+      rewardRight();
+      rewardLeft();
     }
   });
 
   return (
     <div className="App">
-      <span id="rewardId" />
+      <span id="rewardRight" />
+      <span id="rewardLeft" />
     </div>
   );
 };
