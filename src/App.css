@@ -5,6 +5,8 @@
   align-items: center;
   justify-content: space-between;
   background-color: #282c34;
+  position: relative;
+  overflow: hidden;
 }
 
 .footer {
