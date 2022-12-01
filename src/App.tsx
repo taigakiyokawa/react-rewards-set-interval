@@ -43,8 +43,18 @@ export const App: FC = () => {
   return (
     <>
       <header className="header">
-        <span id="rewardLeft" />
-        <span id="rewardRight" />
+        <div className="popper">
+          <div>🎉</div>
+          <span id="rewardLeft" />
+        </div>
+        <div className="hero_image">
+          <div>🥳</div>
+          <div>🎂</div>
+        </div>
+        <div className="popper">
+          <span id="rewardRight" />
+          <span className="flip_horizontal">🎉</span>
+        </div>
       </header>
       <footer className="footer" />
     </>
