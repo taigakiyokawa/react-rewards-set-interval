@@ -2,11 +2,25 @@
   width: 100%;
   min-height: 100vh;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: space-between;
   background-color: #282c34;
   position: relative;
   overflow: hidden;
+  font-size: 6rem;
+}
+
+.hero_image {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.popper {
+  display: flex;
+}
+
+.flip_horizontal {
+  transform: scaleX(-1);
 }
 
 .footer {
